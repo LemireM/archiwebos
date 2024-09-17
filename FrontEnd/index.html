@@ -13,17 +13,20 @@
 	<script src="assets/js/index.js" type="module"></script>
 </head>
 <body>
-<header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
-		<ul>
-			<li>projets</li>
-			<li>contact</li>
-			<li><a href="login.html">login</a></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
-</header>
+  <header>
+    <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+    <nav>
+      <ul>
+        <li>projets</li>
+        <li>contact</li>
+        <li><a id="auth-link" href="login.html">login</a></li>
+        <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+      </ul>
+    </nav>
+  </header>
+  <div id="edition-mode" style="display: none;">
+    <i class="fa-regular fa-pen-to-square"></i><h1>Mode édition</h1>
+  </div>
 <main>
 	<section id="introduction">
 		<figure>
@@ -68,33 +71,38 @@
 		</ul>
 	</nav>
 </footer>
-
 <div class="edit-modal">
 	<div class="modal-container">
 		<div>
-			<h2>Galerie photo</h2>
+			<h2 class="modal-title">Galerie photo</h2>
 			<ul class="gallery-modal"></ul>
-
-			<button id="show-form">Ajouter une image</button>
+        <div class="button-container">
+			    <button id="show-form">Ajouter une photo</button>
+        </div>
 		</div>
-
 		<div>
-			<button id="show-gallery"> précédent </button>
+			<a id="show-gallery"><i class="fa-light fa-arrow-left"></i></a>
+      <h2 class="modal-title">Ajout Photo</h2>
 			<form id="add-work-form">
 				<div>
-					<input type="file" name="image" required>
+					<label class="add-image" for="image">
+						<img src="./assets/icons/add-photo.svg" alt="Ajout photo placehoder"/>
+						<button type="button">+ Ajouter photo</button>
+						<p>jpg, png : 4mo max</p>
+					</label>
+					<input type="file" name="image" id="image" required>
 				</div>
 				<div>
-					<label>Titre</label>
-					<input type="text" name="title" placeholder="Titre" required>
+					<label for="title">Titre</label>
+					<input id="title" type="text" name="title" placeholder="Titre" required>
 				</div>
 				<div>
-					<label>Catégorie</label>
+					<label for="category">Catégorie</label>
 					<select name="select-categories"></select>
 				</div>
-		  <div>
-			<button type="submit">Ajouter une photo</button>
-		  </div>
+		    <div class="button-container">
+			    <button type="submit">Valider</button>
+		    </div>
 			</form>
 		</div>
 	</div>

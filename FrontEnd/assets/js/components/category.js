@@ -6,7 +6,7 @@ class Category {
 
     render(){
         const element = document.createElement('li')
-        element.innerHTML = this.category.name        
+        element.innerHTML = `<a href=''>${this.category.name}</a>`
         element.dataset.id = this.category.id
         return element
     }

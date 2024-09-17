@@ -41,9 +41,18 @@ const displayCategories = () => {
     allCategories.forEach(category => {
         const c = new Category(category)
         const element = c.render()
+        if(category.id === -1){
+            element.classList.add("active")
+        }
 
         element.addEventListener('click', (e) => {
-            const categoryId = parseInt(e.target.dataset.id)
+            e.preventDefault()
+            const categoryId = parseInt(e.currentTarget.dataset.id)
+            const prevActiveCategory = document.querySelector('.categories li.active')
+            if(prevActiveCategory){
+                prevActiveCategory.classList.remove('active')
+            }
+            e.currentTarget.classList.add("active")
             let filteredWorks = works
             if(categoryId !== -1) {
                 filteredWorks = works.filter(w => parseInt(w.categoryId) === categoryId)
@@ -73,7 +82,7 @@ const displayAdminActions = () => {
         modalContainer.classList.remove('show-form')
     })
 
-    showForm.addEventListener('click', () => {        
+    showForm.addEventListener('click', () => {
         modalContainer.classList.add('show-form')
     })
 }
@@ -85,7 +94,7 @@ const init = async () => {
     displayCategories()
     displayWorks(works, false)
     displayAdminActions()
-    
+
 }
 
 const onDeleteWork = async (idWork) => {
@@ -108,7 +117,7 @@ const onAddWork = () => {
             formData.append('category', event.target['select-categories'].value)
 
             try {
-                const work = await addWork(formData);        
+                const work = await addWork(formData);
                 alert('Photo ajoutée avec succès!');
                 form.reset();
                 addWorkToGalleries(work)

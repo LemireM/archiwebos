@@ -194,7 +194,7 @@ footer nav ul {
 }
 
 .edit-modal {
-	display: block;
+	display: none;
 	position: absolute;
 	width: 500px;
 	height: 500px;
@@ -209,6 +209,7 @@ footer nav ul {
 	display: flex;
 	transform: translateX(0);
 	transition: transform .5s linear;
+  border-radius: 10px;
 }
 
 .modal-container.show-form {
@@ -243,6 +244,34 @@ footer nav ul {
     right: 0px;
 }
 
+.modal-container input[type="file"]{
+	display: none;
+}
+
+.modal-container .add-image {
+	background: #E8F1F6;
+    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 3px;
+	padding: 20px 0;
+}
+
+.modal-container #add-work-form {
+	width: 66%;
+	margin: auto;
+}
+
+.modal-container .add-image button {
+	background: #CBD6DC;
+	border-radius: 50px;
+	border: none;
+	color: #306685;
+	padding: 10px 30px;
+	pointer-events: none;
+}
+
 /** boutons categories**/
 .categories {
   display: flex;
@@ -251,16 +280,24 @@ footer nav ul {
   gap: 10px;
 }
 .categories li {
-  width: 100px;
-  height: 37px;
-  text-align: center;
-  color: #1D6154;
-  border-radius: 60px;
-  border: 1px solid #1D6154;
-  padding: 5px;
+
 }
 
-.categories li:hover {
+.categories li a {
+	text-decoration: none;
+	text-align: center;
+	color: #1D6154;
+	border-radius: 60px;
+	border: 1px solid #1D6154;
+	padding: 10px 15px;
+}
+
+.categories li.active a {
+	background: #1D6154;
+    color: white;
+}
+
+.categories li:hover a {
   background-color: #1D6154;
   color: white;
 }
@@ -288,7 +325,7 @@ footer nav ul {
 }
 
 #login input {
-  width: 379px;
+  width: 100%;
   height: 50px;
 	font-size: 1.2em;
 	border: none;
@@ -319,14 +356,13 @@ footer nav ul {
 }
 
 button[type="submit"]{
-  width: 179px;
+  width: 180px;
   height: 36px;
   font-family: 'Syne';
   font-weight: 700;
   color: white;
   background-color: #1D6154;
   margin : 2em auto ;
-  width: 180px;
   text-align: center;
   border-radius: 60px ;
   border: none;
@@ -336,4 +372,70 @@ button[type="submit"]{
   display: flex;
   justify-content: center;
   text-decoration: underline;
+}
+
+#login .error {
+	color: red;
+	text-align: center;
+	margin: 20px 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+#show-form {
+  width: 180px;
+  height: 36px;
+  font-family: 'Syne';
+  font-weight: 700;
+  color: white;
+  background-color: #1D6154;
+  margin : 2em auto ;
+  text-align: center;
+  border-radius: 60px ;
+  border: none;
+  margin-bottom: 45px;
+}
+
+label[for="title"] {
+  text-align: left;
+	margin-top:30px;
+  margin-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+label[for="category"] {
+  text-align: left;
+	margin-top:30px;
+  margin-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+#title {
+  width: 100%;
+  height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+select[name="select-categories"] {
+  width: 100%;
+  height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.modal-title {
+  text-align: center;
+  font-family: Work Sans;
+  font-size: 26px;
+  font-weight: 400;
+  color : black;
+  margin-bottom: 30px;
 }
