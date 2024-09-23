@@ -45,3 +45,14 @@ exports.login = async (req, res) => {
 
 	}
 }
+
+exports.user = async (req, res) => {
+	const userId = req.auth.userId;
+	const user = await Users.findOne({where: {id: userId}});
+	if(user === null){
+		return res.status(404).json({message: 'user not found'})
+	}else {
+		return res.status(200).json(user)
+
+	}
+}

@@ -40,5 +40,14 @@ const addWork = (formData) => {
   .then(response => response.json())
 }
 
+const getUser = () => {
+    return fetch('http://localhost:5678/api/users/me', {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+    })
+  }
 
-export {getCategories, getWorks, getToken, deleteWork, addWork}
+
+export {getCategories, getWorks, getToken, deleteWork, addWork, getUser}

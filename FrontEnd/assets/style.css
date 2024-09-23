@@ -28,6 +28,11 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
+* {
+	scroll-behavior: smooth;
+}
+
 body {
 	line-height: 1;
 }
@@ -53,11 +58,17 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
 header {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
 }
+
+body.edition header {
+	margin: 100px 0 50px 0;
+}
+
 section {
 	margin: 50px 0
 }
@@ -129,8 +140,7 @@ li:hover {
 	margin-bottom: 0.5em;
 }
 #portfolio h2 {
-	text-align: center;
-	margin-bottom: 1em;
+	text-align: center;	
 }
 .gallery {
 	width: 100%;
@@ -194,22 +204,37 @@ footer nav ul {
 }
 
 .edit-modal {
-	display: none;
-	position: absolute;
-	width: 500px;
-	height: 500px;
+	/*display: none;*/
+	position: fixed;
+	width: 630px;
+	height: 688px;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background: white;
-	overflow: hidden;
+	overflow: hidden;	
+	border-radius: 10px;
+	z-index: 11;
+}
+
+.modal {
+	display: none;
 }
 
 .modal-container {
 	display: flex;
 	transform: translateX(0);
 	transition: transform .5s linear;
-  border-radius: 10px;
+}
+
+.modal-bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #0000004D;
+	z-index: 9;
+	width: 100%;
+	height: 100%;
 }
 
 .modal-container.show-form {
@@ -219,6 +244,15 @@ footer nav ul {
 .modal-container > div {
 	width: 100%;
 	flex-shrink: 0;
+	padding: 50px 80px;
+	box-sizing: border-box;
+	position: relative
+}
+
+.modal-container > div .fa-x {
+	position: absolute;
+	top: 30px;
+	right: 30px;
 }
 
 .gallery-modal {
@@ -307,6 +341,7 @@ footer nav ul {
   justify-content: center;
   align-items: center;
   position: relative;
+  padding-bottom: 1em;
 }
 
 #edit-link {
@@ -314,6 +349,24 @@ footer nav ul {
   text-decoration: none;
   margin-left: 10px;
   color: black;
+}
+
+#edition-mode {
+	display: none;
+    background: black;
+    position: fixed;
+    width: 100%;
+    color: white;
+    justify-content: center;
+    align-items: center;
+	top: 0;
+	left: 0;
+	padding: 20px 0;
+	z-index: 10;
+}
+
+#edition-mode p {
+	margin-left: 12px;
 }
 
 /** page de login **/

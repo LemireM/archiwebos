@@ -30,14 +30,3 @@ form.addEventListener('submit', async (e) => {
 
 })
 
-const editionModeIfLoggedIn = () => {
-  const token = localStorage.getItem('token')
-  if (token) {
-      const div = document.getElementById('edition-mode')
-      if (div) {
-          div.style.display = 'block'
-      }
-  }
-}
-
-editionModeIfLoggedIn()

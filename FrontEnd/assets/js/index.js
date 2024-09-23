@@ -1,4 +1,4 @@
-import { getCategories, getWorks, deleteWork, addWork } from "./api.js"
+import { getCategories, getWorks, deleteWork, addWork, getUser } from "./api.js"
 import Category from "./components/category.js"
 import Work from "./components/work.js"
 import SelectCategories from "./components/select-categories.js"
@@ -64,11 +64,11 @@ const displayCategories = () => {
     });
 }
 
-const displayAdminActions = () => {
-    const editLink = document.querySelector('#edit-link')
-    if(localStorage.getItem('token')){
-        editLink.style.display = 'block'
-    }
+const displayAdminActions = () => {   
+    const editLink = document.querySelector('#edit-link')     
+    const modal = document.querySelector('.modal')
+    const modalBg = document.querySelector('.modal-bg')
+    
     displayWorks(works, true)
     const selectCategories = new SelectCategories(categories)
     selectCategories.render()
@@ -77,6 +77,7 @@ const displayAdminActions = () => {
     const showGallery = document.querySelector('#show-gallery')
     const showForm = document.querySelector('#show-form')
     const modalContainer = document.querySelector('.modal-container')
+    const closeModal = document.querySelectorAll('.fa-x')
 
     showGallery.addEventListener('click', () => {
         modalContainer.classList.remove('show-form')
@@ -85,6 +86,20 @@ const displayAdminActions = () => {
     showForm.addEventListener('click', () => {
         modalContainer.classList.add('show-form')
     })
+
+    closeModal.forEach((e) => e.addEventListener('click', () => {
+        modal.style.display = 'none'
+    }))
+
+    modalBg.addEventListener('click', () => {
+        modal.style.display = 'none'
+    })
+
+    editLink.addEventListener('click', () => {
+        modal.style.display = 'block'
+    })
+
+
 }
 
 const init = async () => {
@@ -94,6 +109,7 @@ const init = async () => {
     displayCategories()
     displayWorks(works, false)
     displayAdminActions()
+    editionModeIfLoggedIn()
 
 }
 
@@ -127,6 +143,43 @@ const onAddWork = () => {
         });
     }
   };
+
+  const logout = () => {
+    localStorage.removeItem('token')
+    window.location.reload()
+  }
+
+  const editionModeIfLoggedIn = async () => {
+    const editLink = document.querySelector('#edit-link')    
+    const authLink = document.querySelector('#auth-link')
+    const body = document.querySelector('body')
+    body.classList.remove('edition')
+    const resp = await getUser()
+    if(resp.status === 401){
+        //window.location.href = '/login.html'
+        return
+    }
+    // On sait qu'on est connecté avec un token valide
+    const div = document.getElementById('edition-mode')
+    if (div) {
+        div.style.display = 'flex'
+        body.classList.add('edition')
+
+    }
+    if(editLink){
+        editLink.style.display = 'block'
+    }
+
+    if(authLink){
+        authLink.innerText = 'logout'
+        authLink.addEventListener('click', e => {
+            e.preventDefault()
+            logout()
+
+        })
+    }
+  }
+    
 
 
 
