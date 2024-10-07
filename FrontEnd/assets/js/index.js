@@ -64,11 +64,11 @@ const displayCategories = () => {
     });
 }
 
-const displayAdminActions = () => {   
-    const editLink = document.querySelector('#edit-link')     
+const displayAdminActions = () => {
+    const editLink = document.querySelector('#edit-link')
     const modal = document.querySelector('.modal')
     const modalBg = document.querySelector('.modal-bg')
-    
+
     displayWorks(works, true)
     const selectCategories = new SelectCategories(categories)
     selectCategories.render()
@@ -121,6 +121,10 @@ const onDeleteWork = async (idWork) => {
     }
 }
 
+document.getElementById('image').addEventListener('click', function() {
+  document.getElementById('image-upload').click();
+});
+
 const onAddWork = () => {
 
     const form = document.getElementById('add-work-form');
@@ -128,7 +132,7 @@ const onAddWork = () => {
         form.addEventListener('submit', async (event) => {
             event.preventDefault()
             const formData = new FormData();
-            formData.append('image', event.target.image.files[0])
+            formData.append('image', document.getElementById('image-upload').files[0])
             formData.append('title', event.target.title.value)
             formData.append('category', event.target['select-categories'].value)
 
@@ -150,7 +154,7 @@ const onAddWork = () => {
   }
 
   const editionModeIfLoggedIn = async () => {
-    const editLink = document.querySelector('#edit-link')    
+    const editLink = document.querySelector('#edit-link')
     const authLink = document.querySelector('#auth-link')
     const body = document.querySelector('body')
     body.classList.remove('edition')
@@ -179,7 +183,7 @@ const onAddWork = () => {
         })
     }
   }
-    
+
 
 
 

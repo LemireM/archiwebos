@@ -9,7 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 	<script src="assets/js/index.js" type="module"></script>
 </head>
 <body>
@@ -72,7 +72,7 @@
 	</nav>
 </footer>
 <div class="modal">
-	<div class="edit-modal">	
+	<div class="edit-modal">
 		<div class="modal-container">
 			<div>
 				<h2 class="modal-title">Galerie photo</h2>
@@ -88,11 +88,11 @@
 				<form id="add-work-form">
 					<div>
 						<label class="add-image" for="image">
-							<img src="./assets/icons/add-photo.svg" alt="Ajout photo placehoder"/>
-							<button type="button">+ Ajouter photo</button>
-							<p>jpg, png : 4mo max</p>
+							<img src="./assets/icons/add-photo.svg" alt="Ajout photo placehoder">
+							<button type="button" id="image">+ Ajouter photo</button>
+							<span>jpg, png : 4mo max</span>
 						</label>
-						<input type="file" name="image" id="image" required>
+						<input type="file" name="image" id="image-upload" required>
 					</div>
 					<div>
 						<label for="title">Titre</label>
@@ -100,7 +100,7 @@
 					</div>
 					<div>
 						<label for="category">Catégorie</label>
-						<select name="select-categories"></select>
+						<select name="select-categories" id="category"></select>
 					</div>
 				<div class="button-container">
 					<button type="submit">Valider</button>
@@ -108,7 +108,7 @@
 				</form>
 			</div>
 		</div>
-	
+
 	</div>
 	<div class="modal-bg"></div>
 </div>
