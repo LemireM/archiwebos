@@ -86,9 +86,10 @@
 				<a id="show-gallery"><i class="fas fa-arrow-left"></i></a>
 		  <h2 class="modal-title">Ajout Photo</h2>
 				<form id="add-work-form">
-					<div>
+					<div id="image-container">
 						<label class="add-image" for="image">
-							<img src="./assets/icons/add-photo.svg" alt="Ajout photo placehoder">
+              <img id="image-preview" alt="preview de l'image">
+              <img id="image-placeholder" src="./assets/icons/add-photo.svg" alt="Ajout photo placehoder">
 							<button type="button" id="image">+ Ajouter photo</button>
 							<span>jpg, png : 4mo max</span>
 						</label>
@@ -103,7 +104,7 @@
 						<select name="select-categories" id="category"></select>
 					</div>
 				<div class="button-container">
-					<button type="submit">Valider</button>
+					<button type="submit" id="submit-button" class="button-disabled" disabled>Valider</button>
 				</div>
 				</form>
 			</div>

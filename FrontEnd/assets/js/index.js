@@ -184,6 +184,62 @@ const onAddWork = () => {
     }
   }
 
+  const fileInput = document.getElementById('image-upload');
+  const imagePreview = document.getElementById('image-preview');
+  const addButton = document.getElementById('image');
+
+  fileInput.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+
+      if (file && file.type.startsWith('image/')) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+              imagePreview.src = e.target.result;
+              imagePreview.style.display = 'block'; // Afficher l'image une fois chargée
+          }
+
+          reader.readAsDataURL(file);
+      } else {
+          // Cacher l'image si le fichier sélectionné n'est pas une image
+          imagePreview.style.display = 'none';
+      }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('add-work-form');
+    const submitButton = document.getElementById('submit-button');
+    const titleInput = document.getElementById('title');
+    const categorySelect = document.getElementById('category');
+    const imageUploadInput = document.getElementById('image-upload');
+
+    // Fonction pour vérifier si tous les champs sont remplis
+    function checkFormValidity() {
+        const isValid = titleInput.value.trim() !== '' &&
+                        categorySelect.value !== '' &&
+                        imageUploadInput.files.length > 0;
+
+        // Met à jour l'état du bouton
+        if (isValid) {
+            submitButton.classList.remove('button-disabled');
+            submitButton.disabled = false;
+            submitButton.style.backgroundColor = '#1D6154';
+            submitButton.style.cursor = 'pointer'; // Changer le curseur
+        } else {
+            submitButton.classList.add('button-disabled');
+            submitButton.disabled = true;
+            submitButton.style.backgroundColor = '#a7a7a7';
+            submitButton.style.cursor = 'not-allowed'; // Changer le curseur
+        }
+    }
+
+    // Ajout d'événements pour surveiller les changements dans les champs
+    titleInput.addEventListener('input', checkFormValidity);
+    categorySelect.addEventListener('change', checkFormValidity);
+    imageUploadInput.addEventListener('change', checkFormValidity);
+
+    // Vérification initiale lors du chargement de la page
+    checkFormValidity();
+  });
 
 
 

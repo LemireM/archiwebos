@@ -140,7 +140,7 @@ li:hover {
 	margin-bottom: 0.5em;
 }
 #portfolio h2 {
-	text-align: center;	
+	text-align: center;
 }
 .gallery {
 	width: 100%;
@@ -212,7 +212,7 @@ footer nav ul {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background: white;
-	overflow: hidden;	
+	overflow: hidden;
 	border-radius: 10px;
 	z-index: 11;
 }
@@ -491,4 +491,34 @@ select[name="select-categories"] {
   font-weight: 400;
   color : black;
   margin-bottom: 30px;
+}
+
+#image-container {
+  position: relative;
+  overflow: hidden;
+
+}
+
+#image-preview {
+  position: absolute;
+  top: 0; left: 0;
+  object-fit: cover;
+  width: 150px;
+  max-height: 165px;
+  z-index: 2;
+  margin-left: 79px;
+  display: none;
+}
+
+.button-disabled {
+  width: 180px;
+  height: 36px;
+  font-family: 'Syne';
+  font-weight: 700;
+  margin : 2em auto ;
+  text-align: center;
+  border-radius: 60px ;
+  border: none;
+  background-color: #a7a7a7;
+  color: white;
 }
