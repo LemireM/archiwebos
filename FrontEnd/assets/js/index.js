@@ -141,6 +141,7 @@ const onAddWork = () => {
                 alert('Photo ajoutée avec succès!');
                 form.reset();
                 addWorkToGalleries(work)
+                closeModal();
               } catch (error) {
                 alert('Erreur lors de l\'ajout de la photo');
               }
@@ -183,6 +184,14 @@ const onAddWork = () => {
         })
     }
   }
+
+  // Fonction pour fermer la modale
+  const closeModal = () => {
+  const modal = document.getElementById('modal-id'); // Remplacez 'modal-id' par l'ID de votre modale
+  if (modal) {
+      modal.style.display = 'none';
+    }
+  };
 
   const fileInput = document.getElementById('image-upload');
   const imagePreview = document.getElementById('image-preview');
